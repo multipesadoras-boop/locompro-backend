@@ -1,5 +1,5 @@
 flask==3.0.0
 flask-cors==4.0.0
-httpx==0.26.0
+httpx[http2]==0.26.0
 beautifulsoup4==4.12.3
 gunicorn==21.2.0
