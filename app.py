@@ -36,7 +36,12 @@ def buscar():
     resultados_tiendas = asyncio.run(buscar_en_tiendas(query))
 
     if not resultados_tiendas:
-        return jsonify({"error": "No encontré el producto en las tiendas"}), 404
+        return jsonify({
+            "query": query,
+            "resultados": [],
+            "mejor_precio": None,
+            "aviso": "No encontré precios en tiendas ahora. Probá de nuevo en unos minutos."
+        }), 200
 
     banco = BANCOS.get(banco_id, BANCOS["galicia"])
     plan = next((p for p in banco["planes"] if p["cuotas"] == n_cuotas), banco["planes"][0])
